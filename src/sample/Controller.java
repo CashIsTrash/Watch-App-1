@@ -2,20 +2,23 @@ package sample;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import sample.model.WatchTimer;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Controller {
 
-
     @FXML
     private Label labelOne;
+    @FXML
     private Timer timer;
     private String second = "00";
     private String minute = "00";
@@ -136,11 +139,8 @@ public class Controller {
     }
 
     public void setTimer() {
-
         if (isTicking){
             wt = new WatchTimer(Long.parseLong(hour),Long.parseLong(minute),Long.parseLong(second));
-
-
             timer = new Timer();
             if(wt.getSec() > 0 || wt.getMin() > 0 || wt.getH() > 0 ){
                 timerOn = true;
@@ -164,7 +164,7 @@ public class Controller {
                         if (hour.length() < 2) {
                             hour = "0" + hour;
                         }
-                        if(Integer.valueOf(hour) < 1 && Integer.valueOf(minute) < 1 && Integer.valueOf(second) < 1){
+                        if(wt.getH() < 1 && wt.getMin() < 1 && wt.getSec() < 1){
                             reset();
                             playAudio(2);
                         }else{
@@ -178,17 +178,13 @@ public class Controller {
                             }else{
                                 wt.setSec(wt.getSec() - 1);
                             }
-
                             Platform.runLater(() -> labelOne.setText(hour + ":" + minute + ":" + second));
                         }
                         isTicking = false;
                     }
                 }, 100, 1000);
-
             }
-
         }
-
     }
 
     public void stop(){
@@ -225,4 +221,33 @@ public class Controller {
             alarm.play();
         }
     }
+
+    @FXML
+    public void timerScene(javafx.event.ActionEvent event)throws IOException{
+        Parent view2 = FXMLLoader.load(getClass().getResource("timer.fxml"));
+        Scene scene2 = new Scene(view2,500,375);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene2);
+        window.show();
+    }
+
+    @FXML
+    public void stopwatchScene(javafx.event.ActionEvent event)throws IOException{
+        Parent view2 = FXMLLoader.load(getClass().getResource("stopwatch.fxml"));
+        Scene scene2 = new Scene(view2,500,375);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene2);
+        window.show();
+    }
+
+
+    @FXML
+    public void alarmScene(javafx.event.ActionEvent event)throws IOException{
+        Parent view2 = FXMLLoader.load(getClass().getResource("alarm.fxml"));
+        Scene scene2 = new Scene(view2,500,375);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene2);
+        window.show();
+    }
+
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane fx:controller="sample.Controller"
+            xmlns:fx="http://javafx.com/fxml" style="-fx-background-color: #1f1f1f;">
+    <top>
+        <HBox style="-fx-background-color: #1f1f1f;" alignment="center">
+            <padding>
+                <Insets top="25"/>
+            </padding>
+            <Button onAction="#timerScene" prefHeight="30"
+                    prefWidth="50" textFill="beige" style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;
+            -fx-background-image: url('sample/Timer.png'); -fx-background-size: 25px;
+            -fx-background-repeat: no-repeat; -fx-background-position: 50%;"/>
+            <Button onAction="#stopwatchScene" prefHeight="30"
+                    prefWidth="50" textFill="beige" style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;
+            -fx-background-image: url('sample/Stopwatch.png'); -fx-background-size: 25px;
+            -fx-background-repeat: no-repeat; -fx-background-position: 50%;"/>
+            <Button onAction="#alarmScene" prefHeight="30"
+                    prefWidth="50" textFill="beige" style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;
+            -fx-background-image: url('sample/Alarm.png'); -fx-background-size: 25px;
+            -fx-background-repeat: no-repeat; -fx-background-position: 50%;" disable="true"/>
+        </HBox>
+    </top>
+    <center>
+        <Label text="Alarm" textFill="beige"/>
+    </center>
+</BorderPane>
