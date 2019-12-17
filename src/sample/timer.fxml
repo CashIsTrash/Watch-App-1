@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.VBox?>
 <BorderPane fx:controller="sample.Controller"
             xmlns:fx="http://javafx.com/fxml">
     <top>
@@ -25,10 +24,14 @@
                     prefWidth="50" textFill="beige" style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;
             -fx-background-image: url('sample/Alarm.png'); -fx-background-size: 25px;
             -fx-background-repeat: no-repeat; -fx-background-position: 50%;"/>
+            <Button onAction="#clockScene" prefHeight="30"
+                    prefWidth="50" textFill="beige" style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;
+            -fx-background-image: url('sample/clock.png'); -fx-background-size: 25px;
+            -fx-background-repeat: no-repeat; -fx-background-position: 50%;"/>
         </HBox>
     </top>
     <center>
-        <GridPane fx:id="rootPane" alignment="center" hgap="5" vgap="5" style="-fx-background-color: #1f1f1f;">
+        <GridPane alignment="center" hgap="5" vgap="5" style="-fx-background-color: #1f1f1f;">
             <Button text="↑" onAction="#hourInc" GridPane.rowIndex="0" GridPane.columnIndex="1" prefHeight="40"
                     prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;
             -fx-border: 1 1 1 1; -fx-border-color: beige;"/>

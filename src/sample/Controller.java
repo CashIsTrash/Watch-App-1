@@ -18,7 +18,6 @@ public class Controller {
 
     @FXML
     private Label labelOne;
-    @FXML
     private Timer timer;
     private String second = "00";
     private String minute = "00";
@@ -228,6 +227,7 @@ public class Controller {
         Scene scene2 = new Scene(view2,500,375);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene2);
+        window.setTitle("Timer");
         window.show();
     }
 
@@ -237,9 +237,9 @@ public class Controller {
         Scene scene2 = new Scene(view2,500,375);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene2);
+        window.setTitle("Stopwatch");
         window.show();
     }
-
 
     @FXML
     public void alarmScene(javafx.event.ActionEvent event)throws IOException{
@@ -247,7 +247,17 @@ public class Controller {
         Scene scene2 = new Scene(view2,500,375);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene2);
+        window.setTitle("Alarm");
         window.show();
     }
 
+    @FXML
+    public void clockScene(javafx.event.ActionEvent event)throws IOException{
+        Parent view2 = FXMLLoader.load(getClass().getResource("clock.fxml"));
+        Scene scene2 = new Scene(view2,500,375);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene2);
+        window.setTitle("Clock");
+        window.show();
+    }
 }
