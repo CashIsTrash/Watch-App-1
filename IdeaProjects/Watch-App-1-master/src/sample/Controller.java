@@ -9,8 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
+import sample.model.Alarm;
 import sample.model.WatchTimer;
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -35,6 +37,19 @@ public class Controller {
     private boolean minDecClicked = false;
     private boolean secIncClicked = false;
     private boolean secDecClicked = false;
+
+
+    LocalTime theTimeIs = LocalTime.now();
+    Alarm myAlarm = new Alarm(11,29);
+
+    public void checkAlarm(){
+        if(theTimeIs.getHour() == myAlarm.getHours() && (theTimeIs.getMinute() == myAlarm.getMinutes())){
+            playAudio(2);
+        }
+
+    }
+
+
 
     public void hourInc(){
         if (!hourIncClicked){
