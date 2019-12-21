@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -7,10 +5,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.geometry.Insets?>
-
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
 <BorderPane fx:controller="sample.Controller"
-            xmlns:fx="http://javafx.com/fxml" style="-fx-background-color: #1f1f1f;">
+            xmlns:fx="http://javafx.com/fxml">
     <top>
         <HBox style="-fx-background-color: #1f1f1f;" alignment="center">
             <padding>
@@ -19,7 +16,7 @@
             <Button onAction="#timerScene" prefHeight="30"
                     prefWidth="50" textFill="beige" style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;
             -fx-background-image: url('sample/Timer.png'); -fx-background-size: 25px;
-            -fx-background-repeat: no-repeat; -fx-background-position: 50%;"/>
+            -fx-background-repeat: no-repeat; -fx-background-position: 50%;" disable="true"/>
             <Button onAction="#stopwatchScene" prefHeight="30"
                     prefWidth="50" textFill="beige" style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;
             -fx-background-image: url('sample/Stopwatch.png'); -fx-background-size: 25px;
@@ -27,46 +24,47 @@
             <Button onAction="#alarmScene" prefHeight="30"
                     prefWidth="50" textFill="beige" style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;
             -fx-background-image: url('sample/Alarm.png'); -fx-background-size: 25px;
-            -fx-background-repeat: no-repeat; -fx-background-position: 50%;" disable="true"/>
+            -fx-background-repeat: no-repeat; -fx-background-position: 50%;"/>
         </HBox>
+
     </top>
     <center>
-
         <GridPane fx:id="rootPane" alignment="center" hgap="5" vgap="5" style="-fx-background-color: #1f1f1f;">
+
             <Button text="↑" onAction="#hourInc" GridPane.rowIndex="0" GridPane.columnIndex="1" prefHeight="40"
                     prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;
             -fx-border: 1 1 1 1; -fx-border-color: beige;"/>
+
             <Button text="↓" onAction="#hourDec" GridPane.rowIndex="2" GridPane.columnIndex="1" prefHeight="40"
                     prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;
             -fx-border: 1 1 1 1; -fx-border-color: beige;"/>
+
             <Button text="↑" onAction="#minInc" GridPane.rowIndex="0" GridPane.columnIndex="2" prefHeight="40"
                     prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;
             -fx-border: 1 1 1 1; -fx-border-color: beige;"/>
             <Button text="↓" onAction="#minDec" GridPane.rowIndex="2" GridPane.columnIndex="2" prefHeight="40"
                     prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;
             -fx-border: 1 1 1 1; -fx-border-color: beige;"/>
-            <Button text="↑" onAction="#secInc" GridPane.rowIndex="0" GridPane.columnIndex="3" prefHeight="40"
-                    prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;
-            -fx-border: 1 1 1 1; -fx-border-color: beige;"/>
-            <Button text="↓" onAction="#secDec" GridPane.rowIndex="2" GridPane.columnIndex="3" prefHeight="40"
-                    prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;
-            -fx-border: 1 1 1 1; -fx-border-color: beige;"/>
-            <Label fx:id="labelOne" textFill="beige" text="00:00" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="3">
+
+<!--            <Button text="↑" onAction="#secInc" GridPane.rowIndex="0" GridPane.columnIndex="2" prefHeight="40"-->
+<!--                    prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;-->
+<!--            -fx-border: 1 1 1 1; -fx-border-color: beige;"/>-->
+
+<!--            <Button text="↓" onAction="#secDec" GridPane.rowIndex="2" GridPane.columnIndex="2" prefHeight="40"-->
+<!--                    prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;-->
+<!--            -fx-border: 1 1 1 1; -fx-border-color: beige;"/>-->
+
+            <Label fx:id="labelOne" textFill="beige" text="00 : 00" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="2">
                 <font>
                     <Font size="77"/>
                 </font>
             </Label>
-            // SET BUTTON
             <Button text="Set" textFill="beige" onAction="#setTimer" GridPane.rowIndex="3" GridPane.columnIndex="1" prefHeight="40"
                     prefWidth="91" style="-fx-background-color: #0f7a0f; -fx-background-radius: 0 0 0 0;"/>
 <!--            <Button text="Stop" textFill="beige" onAction="#stop"  GridPane.rowIndex="3" GridPane.columnIndex="2" prefHeight="40"-->
 <!--                    prefWidth="91" style="-fx-background-color: #aa0c0c; -fx-background-radius: 0 0 0 0;"/>-->
-            <Button text="Reset" textFill="beige" onAction="#reset"  GridPane.rowIndex="3" GridPane.columnIndex="3" prefHeight="40"
-                    prefWidth="91" style="-fx-background-color: #462755; -fx-background-radius: 0 0 0 0;"/>
+            <Button text="Reset" textFill="beige" onAction="#reset"  GridPane.rowIndex="3" GridPane.columnIndex="2" prefHeight="40"
+                    prefWidth="91" style="-fx-background-color: #aa0c0c; -fx-background-radius: 0 0 0 0;"/>
         </GridPane>
     </center>
-        <Label text="Alarm" textFill="beige"/>
-
-
-
 </BorderPane>
