@@ -32,18 +32,18 @@
     <center>
         <GridPane fx:id="rootPane" alignment="center" hgap="50" vgap="5" style="-fx-background-color: #1f1f1f;">
 
-            <Button text="↑" onAction="#hourInc" GridPane.rowIndex="0" GridPane.columnIndex="1" prefHeight="40"
+            <Button text="↑" onAction="#AlarmhourInc" GridPane.rowIndex="0" GridPane.columnIndex="1" prefHeight="40"
                     prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;
             -fx-border: 1 1 1 1; -fx-border-color: beige;"/>
 
-            <Button text="↓" onAction="#hourDec" GridPane.rowIndex="2" GridPane.columnIndex="1" prefHeight="40"
+            <Button text="↓" onAction="#AlarmhourDec" GridPane.rowIndex="2" GridPane.columnIndex="1" prefHeight="40"
                     prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;
             -fx-border: 1 1 1 1; -fx-border-color: beige;"/>
 
-            <Button text="↑" onAction="#minInc" GridPane.rowIndex="0" GridPane.columnIndex="2" prefHeight="40"
+            <Button text="↑" onAction="#AlarmminInc" GridPane.rowIndex="0" GridPane.columnIndex="2" prefHeight="40"
                     prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;
             -fx-border: 1 1 1 1; -fx-border-color: beige;"/>
-            <Button text="↓" onAction="#minDec" GridPane.rowIndex="2" GridPane.columnIndex="2" prefHeight="40"
+            <Button text="↓" onAction="#AlarmminDec" GridPane.rowIndex="2" GridPane.columnIndex="2" prefHeight="40"
                     prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;
             -fx-border: 1 1 1 1; -fx-border-color: beige;"/>
 
@@ -58,7 +58,7 @@
 
             <padding><Insets  right="25"  left="25"/></padding>
 
-            <Button text="Reset" textFill="beige" onAction="#reset"  GridPane.rowIndex="3" GridPane.columnIndex="2" prefHeight="40"
+            <Button text="Reset" textFill="beige" onAction="#AlarmReset"  GridPane.rowIndex="3" GridPane.columnIndex="2" prefHeight="40"
                     prefWidth="91" style="-fx-background-color: #aa0c0c; -fx-background-radius: 0 0 0 0;"/>
         </GridPane>
     </center>

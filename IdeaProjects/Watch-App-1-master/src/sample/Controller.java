@@ -42,6 +42,7 @@ public class Controller {
     LocalTime theTimeIs = LocalTime.now();
     Alarm myAlarm = new Alarm(11,29);
 
+
     public void checkAlarm(){
         if(theTimeIs.getHour() == myAlarm.getHours() && (theTimeIs.getMinute() == myAlarm.getMinutes())){
             playAudio(2);
@@ -49,7 +50,89 @@ public class Controller {
 
     }
 
+    public void AlarmhourInc(){
+        if (!hourIncClicked){
+            isTicking = true;
+            hour = String.valueOf(hourChange);
+            if (hour.length() < 2){
+                hour = "0"+(hourChange);
+            }
+            if (hourChange > 23){
+                hour = "00";
+                hourChange = 1;
+            }else{
+                hourChange++;
+            }
+            labelOne.setText(hour + " : " + minute );
+        }
+    }
 
+    public void AlarmhourDec(){
+        if (!hourDecClicked){
+            isTicking = true;
+            hour = String.valueOf(hourChange -2);
+            if (hour.length() < 2){
+                hour = "0"+(hourChange -2);
+            }
+            if (hourChange <= 1){
+                hour = "23";
+                --hourChange;
+            }else{
+                --hourChange;
+            }
+            labelOne.setText(hour + " : " + minute);
+        }
+    }
+
+
+    public void AlarmminInc(){
+        if (!minIncClicked){
+            isTicking = true;
+            minute = String.valueOf(minChange);
+            if (minute.length() < 2){
+                minute = "0"+(minChange);
+            }
+            if (minChange > 59){
+                minute = "00";
+                minChange = 1;
+            }else{
+                minChange++;
+            }
+            labelOne.setText(hour + " : " + minute );
+        }
+    }
+
+    public void AlarmminDec(){
+        if (!minDecClicked){
+            isTicking = true;
+            minute = String.valueOf(minChange -2);
+            if (minute.length() < 2){
+                minute = "0"+(minChange -2);
+            }
+            if (minChange <= 1){
+                minute = "59";
+                minChange = 60;
+            }else{
+                --minChange;
+            }
+            labelOne.setText(hour + " : " + minute );
+        }
+    }
+
+    public void AlarmReset(){
+        hourIncClicked = false;
+        hourDecClicked = false;
+        minIncClicked = false;
+        minDecClicked = false;
+
+        isTicking = true;
+        Platform.runLater(() -> labelOne.setText("00" + " : " + "00"));
+        hour = "00";
+        minute = "00";
+        hourChange = 1;
+        minChange = 1;
+        stop();
+    }
 
     public void hourInc(){
         if (!hourIncClicked){
@@ -67,6 +150,8 @@ public class Controller {
             labelOne.setText(hour + ":" + minute + ":" + second);
         }
     }
+
+
 
     public void hourDec(){
         if (!hourDecClicked){
