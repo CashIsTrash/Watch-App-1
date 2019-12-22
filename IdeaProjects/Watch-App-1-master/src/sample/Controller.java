@@ -50,7 +50,7 @@ public class Controller {
 
     }
 
-    public void AlarmhourInc(){
+    public void alarmHourInc(){
         if (!hourIncClicked){
             isTicking = true;
             hour = String.valueOf(hourChange);
@@ -67,16 +67,18 @@ public class Controller {
         }
     }
 
-    public void AlarmhourDec(){
+    public void alarmHourDec(){
         if (!hourDecClicked){
             isTicking = true;
             hour = String.valueOf(hourChange -2);
             if (hour.length() < 2){
                 hour = "0"+(hourChange -2);
             }
+
+            // THIS PART..
             if (hourChange <= 1){
                 hour = "23";
-                --hourChange;
+                hourChange = 24;
             }else{
                 --hourChange;
             }
@@ -85,7 +87,7 @@ public class Controller {
     }
 
 
-    public void AlarmminInc(){
+    public void alarmMinInc(){
         if (!minIncClicked){
             isTicking = true;
             minute = String.valueOf(minChange);
@@ -102,7 +104,7 @@ public class Controller {
         }
     }
 
-    public void AlarmminDec(){
+    public void alarmMinDec(){
         if (!minDecClicked){
             isTicking = true;
             minute = String.valueOf(minChange -2);
@@ -134,6 +136,7 @@ public class Controller {
         stop();
     }
 
+    // BENJAMIN
     public void hourInc(){
         if (!hourIncClicked){
             isTicking = true;
