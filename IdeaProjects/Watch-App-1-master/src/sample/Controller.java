@@ -40,14 +40,15 @@ public class Controller {
     private boolean minDecClicked = false;
     private boolean secIncClicked = false;
     private boolean secDecClicked = false;
+    private boolean runninng;
 
 
     public void setAlarm() {
         System.out.println("Alarm has been set to \"" + labelHours.getText() + " : " + labelMinutes.getText() + "\"");
         Thread t = new Thread() {
             public void run() {
-                int wl = 0;
-                while (wl == 0) {
+                 runninng = true;
+                while (runninng) {
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
@@ -170,8 +171,11 @@ public class Controller {
         minute = "00";
         hourChange = 1;
         minChange = 1;
+        runninng = false;
+     //   Thread.interrupted();
         stop();
        // System.exit(1);
+
     }
 
     // BENJAMIN
