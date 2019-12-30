@@ -11,6 +11,7 @@ import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import sample.model.Alarm;
 import sample.model.WatchTimer;
+
 import java.io.IOException;
 import java.time.LocalTime;
 import java.util.Timer;
@@ -19,7 +20,9 @@ import java.util.TimerTask;
 public class Controller {
 
     @FXML
-    private Label labelOne;
+    private Label labelHours;
+    @FXML
+    private Label labelMinutes;
     @FXML
     private Timer timer;
     private String second = "00";
@@ -39,96 +42,102 @@ public class Controller {
     private boolean secDecClicked = false;
 
 
-    LocalTime theTimeIs = LocalTime.now();
-    Alarm myAlarm = new Alarm(11,29);
+    public void setAlarm() {
 
+        LocalTime theTimeIs = LocalTime.now();
 
-    public void checkAlarm(){
-        if(theTimeIs.getHour() == myAlarm.getHours() && (theTimeIs.getMinute() == myAlarm.getMinutes())){
+        String alarmHours = labelHours.getText();
+        int alarmHoursInt = Integer.parseInt(alarmHours);
+        System.out.println("HOURS = " + alarmHoursInt);
+
+        String alarmMinutes = labelMinutes.getText();
+        int alarmMinutesInt = Integer.parseInt(alarmMinutes);
+        System.out.println("Minutes = " + alarmMinutesInt);
+
+        if (theTimeIs.getHour() == alarmHoursInt && theTimeIs.getMinute() == alarmMinutesInt)
             playAudio(2);
-        }
-
     }
 
-    public void alarmHourInc(){
-        if (!hourIncClicked){
+    public void alarmHourInc() {
+        if (!hourIncClicked) {
             isTicking = true;
             hour = String.valueOf(hourChange);
-            if (hour.length() < 2){
-                hour = "0"+(hourChange);
+            if (hour.length() < 2) {
+                hour = "0" + (hourChange);
             }
-            if (hourChange > 23){
+            if (hourChange > 23) {
                 hour = "00";
                 hourChange = 1;
-            }else{
+            } else {
                 hourChange++;
             }
-            labelOne.setText(hour + " : " + minute );
+            labelHours.setText(hour);
+
         }
     }
 
-    public void alarmHourDec(){
-        if (!hourDecClicked){
+    public void alarmHourDec() {
+        if (!hourDecClicked) {
             isTicking = true;
-            hour = String.valueOf(hourChange -2);
-            if (hour.length() < 2){
-                hour = "0"+(hourChange -2);
+            hour = String.valueOf(hourChange - 2);
+            if (hour.length() < 2) {
+                hour = "0" + (hourChange - 2);
             }
 
-            // THIS PART..
-            if (hourChange <= 1){
+            if (hourChange <= 1) {
                 hour = "23";
                 hourChange = 24;
-            }else{
+            } else {
                 --hourChange;
             }
-            labelOne.setText(hour + " : " + minute);
+            labelHours.setText(hour);
         }
     }
 
 
-    public void alarmMinInc(){
-        if (!minIncClicked){
+    public void alarmMinInc() {
+        if (!minIncClicked) {
             isTicking = true;
             minute = String.valueOf(minChange);
-            if (minute.length() < 2){
-                minute = "0"+(minChange);
+            if (minute.length() < 2) {
+                minute = "0" + (minChange);
             }
-            if (minChange > 59){
+            if (minChange > 59) {
                 minute = "00";
                 minChange = 1;
-            }else{
+            } else {
                 minChange++;
             }
-            labelOne.setText(hour + " : " + minute );
+            labelMinutes.setText(minute);
         }
     }
 
-    public void alarmMinDec(){
-        if (!minDecClicked){
+    public void alarmMinDec() {
+        if (!minDecClicked) {
             isTicking = true;
-            minute = String.valueOf(minChange -2);
-            if (minute.length() < 2){
-                minute = "0"+(minChange -2);
+            minute = String.valueOf(minChange - 2);
+            if (minute.length() < 2) {
+                minute = "0" + (minChange - 2);
             }
-            if (minChange <= 1){
+            if (minChange <= 1) {
                 minute = "59";
                 minChange = 60;
-            }else{
+            } else {
                 --minChange;
             }
-            labelOne.setText(hour + " : " + minute );
+            labelMinutes.setText(minute);
         }
     }
 
-    public void AlarmReset(){
+    public void AlarmReset() {
         hourIncClicked = false;
         hourDecClicked = false;
         minIncClicked = false;
         minDecClicked = false;
 
         isTicking = true;
-        Platform.runLater(() -> labelOne.setText("00" + " : " + "00"));
+        Platform.runLater(() -> labelHours.setText("00"));
+        Platform.runLater(() -> labelMinutes.setText("00"));
         hour = "00";
         minute = "00";
         hourChange = 1;
@@ -137,115 +146,114 @@ public class Controller {
     }
 
     // BENJAMIN
-    public void hourInc(){
-        if (!hourIncClicked){
+    public void hourInc() {
+        if (!hourIncClicked) {
             isTicking = true;
             hour = String.valueOf(hourChange);
-            if (hour.length() < 2){
-                hour = "0"+(hourChange);
+            if (hour.length() < 2) {
+                hour = "0" + (hourChange);
             }
-            if (hourChange > 99){
+            if (hourChange > 99) {
                 hour = "00";
                 hourChange = 1;
-            }else{
+            } else {
                 hourChange++;
             }
-            labelOne.setText(hour + ":" + minute + ":" + second);
+            labelHours.setText(hour + ":" + minute + ":" + second);
         }
     }
 
 
-
-    public void hourDec(){
-        if (!hourDecClicked){
+    public void hourDec() {
+        if (!hourDecClicked) {
             isTicking = true;
-            hour = String.valueOf(hourChange -2);
-            if (hour.length() < 2){
-                hour = "0"+(hourChange -2);
+            hour = String.valueOf(hourChange - 2);
+            if (hour.length() < 2) {
+                hour = "0" + (hourChange - 2);
             }
-            if (hourChange <= 1){
+            if (hourChange <= 1) {
                 hour = "99";
                 hourChange = 100;
-            }else{
+            } else {
                 --hourChange;
             }
-            labelOne.setText(hour + ":" + minute + ":" + second);
+            labelHours.setText(hour + ":" + minute + ":" + second);
         }
     }
 
-    public void minInc(){
-        if (!minIncClicked){
+    public void minInc() {
+        if (!minIncClicked) {
             isTicking = true;
             minute = String.valueOf(minChange);
-            if (minute.length() < 2){
-                minute = "0"+(minChange);
+            if (minute.length() < 2) {
+                minute = "0" + (minChange);
             }
-            if (minChange > 59){
+            if (minChange > 59) {
                 minute = "00";
                 minChange = 1;
-            }else{
+            } else {
                 minChange++;
             }
-            labelOne.setText(hour + ":" + minute + ":" + second);
+            labelHours.setText(hour + ":" + minute + ":" + second);
         }
     }
 
-    public void minDec(){
-        if (!minDecClicked){
+    public void minDec() {
+        if (!minDecClicked) {
             isTicking = true;
-            minute = String.valueOf(minChange -2);
-            if (minute.length() < 2){
-                minute = "0"+(minChange -2);
+            minute = String.valueOf(minChange - 2);
+            if (minute.length() < 2) {
+                minute = "0" + (minChange - 2);
             }
-            if (minChange <= 1){
+            if (minChange <= 1) {
                 minute = "59";
                 minChange = 60;
-            }else{
+            } else {
                 --minChange;
             }
-            labelOne.setText(hour + ":" + minute + ":" + second);
+            labelHours.setText(hour + ":" + minute + ":" + second);
         }
     }
 
-    public void secInc(){
-        if (!secIncClicked){
+    public void secInc() {
+        if (!secIncClicked) {
             isTicking = true;
             second = String.valueOf(secChange);
-            if (second.length() < 2){
-                second = "0"+(secChange);
+            if (second.length() < 2) {
+                second = "0" + (secChange);
             }
-            if (secChange > 59){
+            if (secChange > 59) {
                 second = "00";
                 secChange = 1;
-            }else{
+            } else {
                 secChange++;
             }
-            labelOne.setText(hour + ":" + minute + ":" + second);
+            labelHours.setText(hour + ":" + minute + ":" + second);
         }
     }
 
-    public void secDec(){
-        if (!secDecClicked){
+    public void secDec() {
+        if (!secDecClicked) {
             isTicking = true;
-            second = String.valueOf(secChange -2);
-            if (second.length() < 2){
-                second = "0"+(secChange -2);
+            second = String.valueOf(secChange - 2);
+            if (second.length() < 2) {
+                second = "0" + (secChange - 2);
             }
-            if (secChange <= 1){
+            if (secChange <= 1) {
                 second = "59";
                 secChange = 60;
-            }else{
+            } else {
                 --secChange;
             }
-            labelOne.setText(hour + ":" + minute + ":" + second);
+            labelHours.setText(hour + ":" + minute + ":" + second);
         }
     }
 
     public void setTimer() {
-        if (isTicking){
-            wt = new WatchTimer(Long.parseLong(hour),Long.parseLong(minute),Long.parseLong(second));
+        if (isTicking) {
+            wt = new WatchTimer(Long.parseLong(hour), Long.parseLong(minute), Long.parseLong(second));
             timer = new Timer();
-            if(wt.getSec() > 0 || wt.getMin() > 0 || wt.getH() > 0 ){
+            if (wt.getSec() > 0 || wt.getMin() > 0 || wt.getH() > 0) {
                 timerOn = true;
                 hourIncClicked = true;
                 hourDecClicked = true;
@@ -267,21 +275,21 @@ public class Controller {
                         if (hour.length() < 2) {
                             hour = "0" + hour;
                         }
-                        if(wt.getH() < 1 && wt.getMin() < 1 && wt.getSec() < 1){
+                        if (wt.getH() < 1 && wt.getMin() < 1 && wt.getSec() < 1) {
                             reset();
                             playAudio(2);
-                        }else{
+                        } else {
                             if (wt.getSec() < 1 && wt.getMin() != 0) {
                                 wt.setMin(wt.getMin() - 1);
                                 wt.setSec(59);
-                            }else if(wt.getSec() < 1 && wt.getMin() == 0 && wt.getH() != 0) {
-                                wt.setH(wt.getH()-1);
+                            } else if (wt.getSec() < 1 && wt.getMin() == 0 && wt.getH() != 0) {
+                                wt.setH(wt.getH() - 1);
                                 wt.setSec(59);
                                 wt.setMin(59);
-                            }else{
+                            } else {
                                 wt.setSec(wt.getSec() - 1);
                             }
-                            Platform.runLater(() -> labelOne.setText(hour + ":" + minute + ":" + second));
+                            Platform.runLater(() -> labelHours.setText(hour + ":" + minute + ":" + second));
                         }
                         isTicking = false;
                     }
@@ -290,15 +298,15 @@ public class Controller {
         }
     }
 
-    public void stop(){
+    public void stop() {
         isTicking = true;
-        if (timerOn){
+        if (timerOn) {
             Platform.runLater(() -> timer.cancel());
         }
         playAudio(1);
     }
 
-    public void reset(){
+    public void reset() {
         hourIncClicked = false;
         hourDecClicked = false;
         minIncClicked = false;
@@ -306,7 +314,7 @@ public class Controller {
         secIncClicked = false;
         secDecClicked = false;
         isTicking = true;
-        Platform.runLater(() -> labelOne.setText("00" + ":" + "00" + ":" + "00"));
+        Platform.runLater(() -> labelHours.setText("00" + ":" + "00" + ":" + "00"));
         hour = "00";
         minute = "00";
         second = "00";
@@ -316,39 +324,39 @@ public class Controller {
         stop();
     }
 
-    public void playAudio(int choice){
+    public void playAudio(int choice) {
         AudioClip alarm = new AudioClip(getClass().getResource("Alarm.mp3").toString());
-        if (choice == 1){
+        if (choice == 1) {
             alarm.stop();
-        }else{
+        } else {
             alarm.play();
         }
     }
 
     @FXML
-    public void timerScene(javafx.event.ActionEvent event)throws IOException{
+    public void timerScene(javafx.event.ActionEvent event) throws IOException {
         Parent view2 = FXMLLoader.load(getClass().getResource("timer.fxml"));
-        Scene scene2 = new Scene(view2,500,375);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene2 = new Scene(view2, 500, 375);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene2);
         window.show();
     }
 
     @FXML
-    public void stopwatchScene(javafx.event.ActionEvent event)throws IOException{
+    public void stopwatchScene(javafx.event.ActionEvent event) throws IOException {
         Parent view2 = FXMLLoader.load(getClass().getResource("stopwatch.fxml"));
-        Scene scene2 = new Scene(view2,500,375);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene2 = new Scene(view2, 500, 375);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene2);
         window.show();
     }
 
 
     @FXML
-    public void alarmScene(javafx.event.ActionEvent event)throws IOException{
+    public void alarmScene(javafx.event.ActionEvent event) throws IOException {
         Parent view2 = FXMLLoader.load(getClass().getResource("alarm.fxml"));
-        Scene scene2 = new Scene(view2,500,375);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene2 = new Scene(view2, 500, 375);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene2);
         window.show();
     }

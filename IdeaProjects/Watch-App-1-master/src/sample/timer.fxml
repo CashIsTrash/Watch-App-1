@@ -47,7 +47,7 @@
             <Button text="↓" onAction="#secDec" GridPane.rowIndex="2" GridPane.columnIndex="3" prefHeight="40"
                     prefWidth="91" textFill="beige" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;
             -fx-border: 1 1 1 1; -fx-border-color: beige;"/>
-            <Label fx:id="labelOne" textFill="beige" text="00:00:00" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="3">
+            <Label fx:id="labelHours" textFill="beige" text="00:00:00" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="3">
                 <font>
                     <Font size="77"/>
                 </font>
