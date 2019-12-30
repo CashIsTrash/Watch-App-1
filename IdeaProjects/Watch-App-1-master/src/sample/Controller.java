@@ -43,19 +43,47 @@ public class Controller {
 
 
     public void setAlarm() {
+        System.out.println("Alarm has been set to \"" + labelHours.getText() + " : " + labelMinutes.getText() + "\"");
+        Thread t = new Thread() {
+            public void run() {
+                int wl = 0;
+                while (wl == 0) {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    LocalTime theTimeIs = LocalTime.now();
 
-        LocalTime theTimeIs = LocalTime.now();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    String alarmHours = labelHours.getText();
+                    int alarmHoursInt = Integer.parseInt(alarmHours);
+                    //   System.out.println("HOURS = " + alarmHoursInt);
 
-        String alarmHours = labelHours.getText();
-        int alarmHoursInt = Integer.parseInt(alarmHours);
-        System.out.println("HOURS = " + alarmHoursInt);
+                    String alarmMinutes = labelMinutes.getText();
+                    int alarmMinutesInt = Integer.parseInt(alarmMinutes);
+                    // System.out.println("Minutes = " + alarmMinutesInt);
 
-        String alarmMinutes = labelMinutes.getText();
-        int alarmMinutesInt = Integer.parseInt(alarmMinutes);
-        System.out.println("Minutes = " + alarmMinutesInt);
 
-        if (theTimeIs.getHour() == alarmHoursInt && theTimeIs.getMinute() == alarmMinutesInt)
-            playAudio(2);
+                    if (theTimeIs.getHour() == alarmHoursInt && theTimeIs.getMinute() == alarmMinutesInt)
+
+                        playAudio(2);
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        t.setPriority(Thread.MIN_PRIORITY);
+        t.start();
+
+
     }
 
     public void alarmHourInc() {
@@ -143,6 +171,7 @@ public class Controller {
         hourChange = 1;
         minChange = 1;
         stop();
+       // System.exit(1);
     }
 
     // BENJAMIN
