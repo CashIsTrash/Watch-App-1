@@ -5,66 +5,87 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.Controller">
     <top>
         <HBox alignment="center" style="-fx-background-color: #1f1f1f;">
             <padding>
-                <Insets top="25" />
+                <Insets top="25"/>
             </padding>
-            <Button disable="true" onAction="#timerScene" prefHeight="30" prefWidth="50" style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;             -fx-background-image: url('sample/Timer.png'); -fx-background-size: 25px;             -fx-background-repeat: no-repeat; -fx-background-position: 50%;" textFill="beige" />
+            <Button  onAction="#timerScene" prefHeight="30" prefWidth="50"
+                    style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;             -fx-background-image: url('sample/Timer.png'); -fx-background-size: 25px;             -fx-background-repeat: no-repeat; -fx-background-position: 50%;"
+                    textFill="beige"/>
 
-            <Button onAction="#stopwatchScene" prefHeight="30" prefWidth="50" style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;             -fx-background-image: url('sample/Stopwatch.png'); -fx-background-size: 25px;             -fx-background-repeat: no-repeat; -fx-background-position: 50%;" textFill="beige" />
-            <Button onAction="#alarmScene" prefHeight="30" prefWidth="50" style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;             -fx-background-image: url('sample/Alarm.png'); -fx-background-size: 25px;             -fx-background-repeat: no-repeat; -fx-background-position: 50%;" textFill="beige" />
+            <Button onAction="#stopwatchScene" prefHeight="30" prefWidth="50"
+                    style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;             -fx-background-image: url('sample/Stopwatch.png'); -fx-background-size: 25px;             -fx-background-repeat: no-repeat; -fx-background-position: 50%;"
+                    textFill="beige"/>
+            <Button disable="true" onAction="#alarmScene" prefHeight="30" prefWidth="50"
+                    style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;             -fx-background-image: url('sample/Alarm.png'); -fx-background-size: 25px;             -fx-background-repeat: no-repeat; -fx-background-position: 50%;"
+                    textFill="beige"/>
         </HBox>
 
     </top>
     <center>
         <GridPane fx:id="rootPane" alignment="center" hgap="5" style="-fx-background-color: #1f1f1f;" vgap="5">
 
-            <Button onAction="#alarmHourInc" prefHeight="40" prefWidth="91" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;             -fx-border: 1 1 1 1; -fx-border-color: beige;" text="↑" textFill="beige" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Button onAction="#alarmHourInc" prefHeight="40" prefWidth="91"
+                    style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;             -fx-border: 1 1 1 1; -fx-border-color: beige;"
+                    text="↑" textFill="beige" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-            <Button onAction="#alarmHourDec" prefHeight="40" prefWidth="91" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;             -fx-border: 1 1 1 1; -fx-border-color: beige;" text="↓" textFill="beige" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button onAction="#alarmHourDec" prefHeight="40" prefWidth="91"
+                    style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;             -fx-border: 1 1 1 1; -fx-border-color: beige;"
+                    text="↓" textFill="beige" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
-            <Button onAction="#alarmMinInc" prefHeight="40" prefWidth="91" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;             -fx-border: 1 1 1 1; -fx-border-color: beige;" text="↑" textFill="beige" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-            <Button onAction="#alarmMinDec" prefHeight="40" prefWidth="91" style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;             -fx-border: 1 1 1 1; -fx-border-color: beige;" text="↓" textFill="beige" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button onAction="#alarmMinInc" prefHeight="40" prefWidth="91"
+                    style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;             -fx-border: 1 1 1 1; -fx-border-color: beige;"
+                    text="↑" textFill="beige" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+            <Button onAction="#alarmMinDec" prefHeight="40" prefWidth="91"
+                    style="-fx-background-color: #1d1d1d; -fx-background-radius: 0 0 0 0;             -fx-border: 1 1 1 1; -fx-border-color: beige;"
+                    text="↓" textFill="beige" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
 
 
-            <Label fx:id="labelHours" text="00" textFill="beige" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
-            <font>
-                <Font size="77" />
-            </font>
-        </Label>
-            <Label fx:id="labelMinutes" text="00" textFill="beige" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <Label fx:id="labelHours" text="00" textFill="beige" GridPane.columnIndex="1" GridPane.columnSpan="2"
+                   GridPane.rowIndex="1">
                 <font>
-                    <Font size="77" />
+                    <Font size="77"/>
+                </font>
+            </Label>
+            <Label fx:id="labelMinutes" text="00" textFill="beige" GridPane.columnIndex="3" GridPane.columnSpan="2"
+                   GridPane.rowIndex="1">
+                <font>
+                    <Font size="77"/>
                 </font>
             </Label>
             <Label fx:id="labelSeperator" text=":" textFill="beige" GridPane.columnIndex="2" GridPane.rowIndex="1">
                 <font>
-                    <Font size="77" />
+                    <Font size="77"/>
                 </font>
             </Label>
 
 
-            <Button fx:id="btn_Set" onAction="#setAlarm" prefHeight="40" prefWidth="91" style="-fx-background-color: #0f7a0f; -fx-background-radius: 0 0 0 0;" text="Set" textFill="beige" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="btn_Set" onAction="#setAlarm" prefHeight="40" prefWidth="91"
+                    style="-fx-background-color: #0f7a0f; -fx-background-radius: 0 0 0 0;" text="Set" textFill="beige"
+                    GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 
-            <Button onAction="#AlarmReset" prefHeight="40" prefWidth="91" style="-fx-background-color: #aa0c0c; -fx-background-radius: 0 0 0 0;" text="Reset" textFill="beige" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button onAction="#AlarmReset" prefHeight="40" prefWidth="91"
+                    style="-fx-background-color: #aa0c0c; -fx-background-radius: 0 0 0 0;" text="Reset" textFill="beige"
+                    GridPane.columnIndex="3" GridPane.rowIndex="3"/>
 
             <padding>
-                <Insets left="25" right="25" />
+                <Insets left="25" right="25"/>
             </padding>
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
+            <columnConstraints>
+                <ColumnConstraints/>
+                <ColumnConstraints/>
+                <ColumnConstraints/>
+                <ColumnConstraints/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+            </rowConstraints>
         </GridPane>
     </center>
 </BorderPane>

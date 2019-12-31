@@ -62,14 +62,15 @@ public class Controller {
                     // System.out.println("Minutes = " + alarmMinutesInt);
 
 
-                    if (theTimeIs.getHour() == alarmHoursInt && theTimeIs.getMinute() == alarmMinutesInt)
+                        if (theTimeIs.getHour() == alarmHoursInt && theTimeIs.getMinute() == alarmMinutesInt)
 
-                        playAudio(2);
-                    try {
-                        Thread.sleep(12000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                            playAudio(2);
+                        try {
+                            Thread.sleep(12000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
                 }
             }
         };
