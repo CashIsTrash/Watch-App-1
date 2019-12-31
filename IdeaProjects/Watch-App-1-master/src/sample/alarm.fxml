@@ -12,7 +12,7 @@
             <padding>
                 <Insets top="25"/>
             </padding>
-            <Button  onAction="#timerScene" prefHeight="30" prefWidth="50"
+            <Button onAction="#timerScene" prefHeight="30" prefWidth="50"
                     style="-fx-background-color: #1f1f1f; -fx-background-radius: 0 0 0 0;             -fx-background-image: url('sample/Timer.png'); -fx-background-size: 25px;             -fx-background-repeat: no-repeat; -fx-background-position: 50%;"
                     textFill="beige"/>
 
@@ -67,7 +67,7 @@
                     style="-fx-background-color: #0f7a0f; -fx-background-radius: 0 0 0 0;" text="Set" textFill="beige"
                     GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 
-            <Button onAction="#AlarmReset" prefHeight="40" prefWidth="91"
+            <Button onAction="#alarmReset" prefHeight="40" prefWidth="91"
                     style="-fx-background-color: #aa0c0c; -fx-background-radius: 0 0 0 0;" text="Reset" textFill="beige"
                     GridPane.columnIndex="3" GridPane.rowIndex="3"/>
 

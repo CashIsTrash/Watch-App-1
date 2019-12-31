@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="99.0"
+            prefWidth="439.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.Controller">
+    <children>
+        <Label fx:id="labelAlarm" layoutX="104.0" layoutY="22.0" prefHeight="18.0" prefWidth="202.0"
+               text="The alarm has been set successfully!"/>
+
+        <Button fx:id="btnOkClicked" layoutX="325.0" layoutY="50.0" mnemonicParsing="false" onAction="#btnOkClicked"
+                prefHeight="26.0" prefWidth="71.0" text="Ok"/>
+
+
+    </children>
+</AnchorPane>

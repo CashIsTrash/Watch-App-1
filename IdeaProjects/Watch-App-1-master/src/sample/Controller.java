@@ -1,21 +1,26 @@
 package sample;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.media.AudioClip;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sample.model.Alarm;
 import sample.model.WatchTimer;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalTime;
+import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+
 
 public class Controller {
 
@@ -25,6 +30,9 @@ public class Controller {
     private Label labelMinutes;
     @FXML
     private Timer timer;
+    @FXML
+    private Label labelAlarm;
+
     private String second = "00";
     private String minute = "00";
     private String hour = "00";
@@ -40,15 +48,16 @@ public class Controller {
     private boolean minDecClicked = false;
     private boolean secIncClicked = false;
     private boolean secDecClicked = false;
-    private boolean runninng;
+    private boolean running;
 
 
-    public void setAlarm() {
-        System.out.println("Alarm has been set to \"" + labelHours.getText() + " : " + labelMinutes.getText() + "\"");
+    public void setAlarm() throws IOException {
+
+        popUpMsg();
         Thread t = new Thread() {
             public void run() {
-                 runninng = true;
-                while (runninng) {
+                 running = true;
+                while (running) {
 
                     LocalTime theTimeIs = LocalTime.now();
 
@@ -79,6 +88,7 @@ public class Controller {
 
 
     }
+
 
     public void alarmHourInc() {
         if (!hourIncClicked) {
@@ -151,7 +161,7 @@ public class Controller {
         }
     }
 
-    public void AlarmReset() {
+    public void alarmReset() {
         hourIncClicked = false;
         hourDecClicked = false;
         minIncClicked = false;
@@ -164,11 +174,9 @@ public class Controller {
         minute = "00";
         hourChange = 1;
         minChange = 1;
-        runninng = false;
-      //  Thread.interrupted();
-        stop();
-       // System.exit(1);
 
+        running = false;
+        stop();
     }
 
     // BENJAMIN
@@ -386,5 +394,28 @@ public class Controller {
         window.setScene(scene2);
         window.show();
     }
+
+    public void popUpMsg() throws IOException {
+
+        Parent root = FXMLLoader.load(Controller.class.getResource("alarmMessage.fxml"));
+        Stage newStage = new Stage();
+        newStage.initModality(Modality.APPLICATION_MODAL);
+
+        newStage.setTitle("Confirmation");
+        newStage.setScene(new Scene(root, 400, 90));
+        newStage.show();
+    }
+
+
+    @FXML
+    public void btnOkClicked(ActionEvent event) {
+        ((Node) event.getSource()).getScene().getWindow().hide();
+    }
+
+
+
+
+
+
 
 }
