@@ -49,18 +49,10 @@ public class Controller {
             public void run() {
                  runninng = true;
                 while (runninng) {
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+
                     LocalTime theTimeIs = LocalTime.now();
 
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+
                     String alarmHours = labelHours.getText();
                     int alarmHoursInt = Integer.parseInt(alarmHours);
                     //   System.out.println("HOURS = " + alarmHoursInt);
@@ -74,14 +66,14 @@ public class Controller {
 
                         playAudio(2);
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(12000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
             }
         };
-        t.setPriority(Thread.MIN_PRIORITY);
+        t.setPriority(Thread.MAX_PRIORITY);
         t.start();
 
 
@@ -172,7 +164,7 @@ public class Controller {
         hourChange = 1;
         minChange = 1;
         runninng = false;
-     //   Thread.interrupted();
+      //  Thread.interrupted();
         stop();
        // System.exit(1);
 
